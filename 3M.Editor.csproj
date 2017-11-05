@@ -125,6 +125,10 @@
       <Project>{7DFBBC42-4843-02BE-4E04-BD28DC23A88B}</Project>
       <Name>3M</Name>
     </ProjectReference>
+    <ProjectReference Include="3M.unityproj">
+      <Project>{7DFBBC42-4843-02BE-4E04-BD28DC23A88B}</Project>
+      <Name>3M</Name>
+    </ProjectReference>
     <ProjectReference Include="3M.Editor.Plugins.csproj">
       <Project>{D385A9BD-56A7-B0BE-DB84-049516FEF700}</Project>
       <Name>3M.Editor.Plugins</Name>
@@ -132,8 +136,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Packages\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\PyroParticles\Prefab\Editor\PyroParticlesEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
     <None Include="Assets\Packages\Blood decal pack\readme.txt" />
     <None Include="Assets\Packages\Fantasy Defensive Structures\Fantasy Defensive Strucures\Readme.txt" />
     <None Include="Assets\Packages\Mega Fantasy Props Pack\README.txt" />
@@ -148,6 +154,8 @@
     <None Include="Assets\Packages\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
     <None Include="Assets\Packages\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
     <None Include="Assets\Packages\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+    <None Include="Assets\PyroParticles\Prefab\Materials\AdditiveTintable.shader" />
+    <None Include="Assets\PyroParticles\Readme.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>

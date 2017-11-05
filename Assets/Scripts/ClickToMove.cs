@@ -23,7 +23,8 @@ public class ClickToMove : MonoBehaviour {
 
 	void Update ()
     {
-        PlayerMovement();       
+        PlayerMovement();
+
 	}
     
 
