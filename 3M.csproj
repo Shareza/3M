@@ -155,6 +155,12 @@
     <Compile Include="Assets\Scripts\Mob.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SpellsController.cs" />
+    <Compile Include="Assets\Spawner\Example\Script\RandomMover.cs" />
+    <Compile Include="Assets\Spawner\Example\Script\SpawnViewer.cs" />
+    <Compile Include="Assets\Spawner\Scripts\InstanceManager.cs" />
+    <Compile Include="Assets\Spawner\Scripts\SpawnAI.cs" />
+    <Compile Include="Assets\Spawner\Scripts\SpawnEnums.cs" />
+    <Compile Include="Assets\Spawner\Scripts\Spawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
@@ -174,6 +180,7 @@
     <None Include="Assets\Packages\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
     <None Include="Assets\PyroParticles\Prefab\Materials\AdditiveTintable.shader" />
     <None Include="Assets\PyroParticles\Readme.txt" />
+    <None Include="Assets\Spawner\README.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>

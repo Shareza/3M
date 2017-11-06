@@ -6,7 +6,8 @@ public class FireBallScript : MonoBehaviour {
 
     Rigidbody rb;
     public float speed = 1.5f;
-    public float lifeTime = 0.01f;
+    public float lifeTime = 1;
+    Collision col;
 
     void Start()
     {
@@ -16,11 +17,18 @@ public class FireBallScript : MonoBehaviour {
 
     private void Update()
     {
+        OnCollisionEnter(col);
         DestroyFireBallAfterLifeTimeFades();
     }
 
     private void DestroyFireBallAfterLifeTimeFades()
     {
         Destroy(gameObject, lifeTime);
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Shootable")
+            Destroy(gameObject);
     }
 }
