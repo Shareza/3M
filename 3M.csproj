@@ -84,7 +84,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FireBallScript.cs" />
     <Compile Include="Assets\Packages\Particle Ribbon by Moonflower Carnivore\Scripts\randomParticleRotation.cs" />
     <Compile Include="Assets\Packages\Particle Ribbon by Moonflower Carnivore\Scripts\ReverseNormals.cs" />
     <Compile Include="Assets\Packages\Particle Ribbon by Moonflower Carnivore\Scripts\rotation.cs" />
@@ -152,9 +151,10 @@
     <Compile Include="Assets\PyroParticles\Prefab\Script\SingleLineAttribute.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\ClickToMove.cs" />
+    <Compile Include="Assets\Scripts\FireBallScript.cs" />
     <Compile Include="Assets\Scripts\Mob.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\SpellsController.cs" />
+    <Compile Include="Assets\Scripts\SpellsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
