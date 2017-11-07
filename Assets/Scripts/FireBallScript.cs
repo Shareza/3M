@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class FireBallScript : MonoBehaviour {
 
+    Collision collision;
     Rigidbody rb;
+
+    public GameObject explosion;
     public float speed = 1.5f;
-    public float lifeTime = 1;
-    Collision col;
+    public float lifeTime = 1.0f;
+    
 
     void Start()
     {
@@ -17,8 +20,8 @@ public class FireBallScript : MonoBehaviour {
 
     private void Update()
     {
-        OnCollisionEnter(col);
         DestroyFireBallAfterLifeTimeFades();
+        OnCollisionEnter(collision);  
     }
 
     private void DestroyFireBallAfterLifeTimeFades()
@@ -28,7 +31,12 @@ public class FireBallScript : MonoBehaviour {
 
     private void OnCollisionEnter(Collision col)
     {
+
+
         if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Shootable")
+        {
+            explosion = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
             Destroy(gameObject);
+        }
     }
 }
