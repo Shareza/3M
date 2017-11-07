@@ -84,7 +84,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ExplosionScript.cs" />
     <Compile Include="Assets\Packages\Particle Dissolve Shader by Moonflower Carnivore\Scripts\HUDFPS.cs" />
     <Compile Include="Assets\Packages\Particle Dissolve Shader by Moonflower Carnivore\Scripts\PDS_GameController.cs" />
     <Compile Include="Assets\Packages\Particle Dissolve Shader by Moonflower Carnivore\Scripts\ScrollingUVs_PDS.cs" />
@@ -157,14 +156,17 @@
     <Compile Include="Assets\Packages\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\Packages\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Packages\Standard Assets\Utility\WaypointProgressTracker.cs" />
+    <Compile Include="Assets\Resources\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\ClickToMove.cs" />
+    <Compile Include="Assets\Scripts\ExplosionScript.cs" />
     <Compile Include="Assets\Scripts\FireBallScript.cs" />
     <Compile Include="Assets\Scripts\Mob.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SpawnAI.cs" />
+    <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\SpellsController.cs" />
-    <Compile Include="Assets\Spawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Packages\Blood decal pack\readme.txt" />
