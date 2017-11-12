@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class FireBallScript : MonoBehaviour {
 
@@ -29,14 +31,24 @@ public class FireBallScript : MonoBehaviour {
         Destroy(gameObject, lifeTime);
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision other)
     {
 
 
-        if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Shootable")
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Shootable")
         {
             explosion = Instantiate(explosion, transform.position, Quaternion.identity) as GameObject;
             Destroy(gameObject);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        DealDamage(other);
+    }
+
+    public void DealDamage(Collider other)
+    {
+        //other.gameObject.GetComponent<>()
     }
 }

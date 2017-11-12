@@ -12,4 +12,9 @@ public class SkeletonHealth : MonoBehaviour
     {
         healthImage.fillAmount = (health / 100);
     }
+
+    public void TakeDamage(float damage)
+    {
+
+    }
 }
