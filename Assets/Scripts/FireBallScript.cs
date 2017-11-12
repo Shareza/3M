@@ -37,7 +37,6 @@ public class FireBallScript : MonoBehaviour {
 
     private void OnCollisionEnter(Collision other)
     {
-        
 
         if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Shootable")
         {
