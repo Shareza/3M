@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpellsController : MonoBehaviour {
 
     public GameObject fireBall;
+    public GameObject lightningStorm;
     public Transform fireBallSpawn;
     public float fireRate;
     public float nextFire;
@@ -14,7 +15,13 @@ public class SpellsController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha1) && Time.time > nextFire)
         {
             nextFire = Time.time * fireRate;
-            GameObject clone = Instantiate(fireBall, fireBallSpawn.position, fireBallSpawn.rotation) as GameObject;
+            GameObject fireBallClone = Instantiate(fireBall, fireBallSpawn.position, fireBallSpawn.rotation) as GameObject;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            GameObject lightningStormClone = Instantiate(lightningStorm, fireBallSpawn.position, fireBallSpawn.rotation) as GameObject;
+            Destroy(lightningStormClone, 1);
         }
     }
 }
