@@ -6,22 +6,52 @@ public class SpellsController : MonoBehaviour {
 
     public GameObject fireBall;
     public GameObject lightningStorm;
-    public Transform fireBallSpawn;
-    public float fireRate;
-    public float nextFire;
-	
-	void Update ()
+    public Transform spellSpawn;
+
+    public float fireBallRequiredMana = 50;
+    public float thunderStormRequiredMana = 100;
+    public float healRequiredMana = 100;
+
+    private ManaManager manaManager;
+    private HealthManager healthManager;
+    private Animator animator;
+
+    public void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && Time.time > nextFire)
+        manaManager = GetComponent<ManaManager>();
+        animator = GetComponent<Animator>();
+        healthManager = GetComponent<HealthManager>();
+    }
+
+    void Update ()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            nextFire = Time.time * fireRate;
-            GameObject fireBallClone = Instantiate(fireBall, fireBallSpawn.position, fireBallSpawn.rotation) as GameObject;
+            if (manaManager.currentMana >= fireBallRequiredMana)
+            {
+                manaManager.DesreaseAmount(fireBallRequiredMana);
+                GameObject fireBallClone = Instantiate(fireBall, spellSpawn.position, spellSpawn.rotation) as GameObject;
+                
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            GameObject lightningStormClone = Instantiate(lightningStorm, fireBallSpawn.position, fireBallSpawn.rotation) as GameObject;
-            Destroy(lightningStormClone, 1);
+            if (manaManager.currentMana >= thunderStormRequiredMana)
+            {
+                manaManager.DesreaseAmount(thunderStormRequiredMana);
+                GameObject lightningStormClone = Instantiate(lightningStorm, spellSpawn.position, spellSpawn.rotation) as GameObject;
+                Destroy(lightningStormClone, 1);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (manaManager.currentMana >= healRequiredMana)
+            {
+                manaManager.DesreaseAmount(healRequiredMana);
+                healthManager.AddHealth(300);
+            }
         }
     }
 }

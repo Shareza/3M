@@ -6,12 +6,8 @@ public class ExplosionScript : MonoBehaviour {
 
     private float lifeTime = 1.0f;
 
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         Destroy(gameObject, lifeTime);
 	}
 }

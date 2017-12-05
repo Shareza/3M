@@ -1,18 +1,22 @@
-﻿#pragma strict
+#pragma strict
 public var mainCamera:Transform;
 public var cameraTrs:Transform;
 public var rotSpeed:int = 20;
 public var effectObj:GameObject[];
 public var effectObProj:GameObject[];
+public var lightObj:Light;
 private var arrayNo:int = 0;
 
 private var nowEffectObj:GameObject;
 private var cameraState:String[] = ["Camera move" ,"Camera stop"];
-private var cameraRotCon:int = 1;
+private var cameraRotCon:int = 0;
 
 private var num:int = 0;
 private var numBck:int = 0;
 private var initPos:Vector3;
+
+private var lightPower:float = 0;
+private var lightPowerBck:float = 0;
 
 private var haveProFlg:boolean = false;
 private var nonProFX:GameObject;
@@ -29,13 +33,18 @@ function visibleBt():boolean{
 
 function Start () {
 	initPos = mainCamera.localPosition;
-	
+	lightPower = lightObj.intensity;//0;//light.intensity;
+
 	haveProFlg = visibleBt();
 }
 
 function Update () {
 	if( cameraRotCon == 1)cameraTrs.Rotate(0 ,rotSpeed * Time.deltaTime ,0);
-	
+
+
+	lightObj.intensity = lightPower;
+
+
 	if(num > numBck){
 		numBck = num;
 		mainCamera.localPosition.y += 0.05;
@@ -56,7 +65,7 @@ function Update () {
 
 function  OnGUI(){
 		
-	if (GUI.Button (Rect(20, 0, 30, 30), "←")) {//return
+	if (GUI.Button (Rect(0, 0, Screen.width/10, Screen.height/10), "pre")) {//return Rect(20, 0, 30, 30
 		arrayNo --;
 		if(arrayNo < 0)arrayNo = effectObj.Length -1;
 		effectOn();
@@ -64,11 +73,11 @@ function  OnGUI(){
 		haveProFlg = visibleBt();
 	}
 	
-	if (GUI.Button (Rect(50, 0, 200, 30), effectObj[ arrayNo ].name )) {
+	if (GUI.Button (Rect(Screen.width/10, 0, Screen.width/3, Screen.height/10), effectObj[ arrayNo ].name )) {//Rect(50, 0, 200, 30
 		effectOn();
 	}
 	
-	if (GUI.Button (Rect(250, 0, 30, 30), "→")) {//next
+	if (GUI.Button (Rect(Screen.width/10 + Screen.width/3, 0, Screen.width/10, Screen.height/10), "next")) {//next Rect(250, 0, 30, 30
 		arrayNo ++;
 		if(arrayNo >= effectObj.Length)arrayNo = 0;
 		effectOn();
@@ -77,14 +86,14 @@ function  OnGUI(){
 	}
 	
 	if( haveProFlg ){
-		if (GUI.Button (Rect(50, 30, 300, 70), "+Distorsion (Pro only)" )) {
+		if (GUI.Button (Rect(50, 30, 300, 70), "+Distorsion" )) {
 			if(nowEffectObj != null)Destroy( nowEffectObj );
 			nowEffectObj = Instantiate( nonProFX );
 		}
 	}
 	
 	
-	if (GUI.Button (Rect(300, 0, 200, 30), cameraState[ cameraRotCon ] )) {
+	if (GUI.Button (Rect(Screen.width/4 + Screen.width/3, 0, Screen.width/6, Screen.height/10), cameraState[ cameraRotCon ] )) {//Rect(300, 0, 200, 30
 		if( cameraRotCon == 1){
 			cameraRotCon = 0;
 		}else{
@@ -92,9 +101,9 @@ function  OnGUI(){
 		}
 	}
 	
-	num = GUI.VerticalSlider(Rect(30, 100, 20, 200), num, 0, 20);
+	num = GUI.VerticalSlider(Rect(Screen.width/30, Screen.height/4, Screen.width/30, Screen.height/2), num, 0, 20);//Rect(30, 100, 20, 200
 	
-
+	lightPower = GUI.VerticalSlider(Rect(Screen.width/30 + Screen.width/25, Screen.height/4, Screen.width/30, Screen.height/2), lightPower, 0, 1.2);//Rect(50, 100, 20, 200
 }
 
 function effectOn(){

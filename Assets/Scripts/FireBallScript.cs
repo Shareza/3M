@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class FireBallScript : MonoBehaviour {
 
-    Collision collision;
+    //Collision collision;
     Rigidbody rb;
     DamageManager damageManager = new DamageManager();
 
     public GameObject explosion;
-    public float minDamage = 10;
-    public float maxDamage = 25;
-    public float power = 10;
+    public float minDamage = 50;
+    public float maxDamage = 100;
+    public float power = 15;
     public float speed = 1.5f;
     public float lifeTime = 1.0f;
 
@@ -27,7 +27,6 @@ public class FireBallScript : MonoBehaviour {
     private void Update()
     {
         DestroyFireBallAfterLifeTimeFades();
-        OnCollisionEnter(collision);  
     }
 
     private void DestroyFireBallAfterLifeTimeFades()
@@ -50,6 +49,6 @@ public class FireBallScript : MonoBehaviour {
     {
         float damage = damageManager.GenerateDamage(power, minDamage, maxDamage);
 
-        other.gameObject.GetComponent<SkeletonHealthManager>().TakeDamage(damage);
+        other.gameObject.GetComponent<SkeletonManager>().TakeDamage(damage);
     }
 }

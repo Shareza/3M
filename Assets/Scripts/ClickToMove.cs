@@ -11,24 +11,26 @@ public class ClickToMove : MonoBehaviour {
     private Vector3 position;
     Animator animator;
 
+    private SpellsController spellsController;
+    private ManaManager manaManager;
 
 
-	void Start ()
+
+
+    void Start ()
     {
         position = transform.position;
         animator = GetComponent<Animator>();
+        spellsController = GetComponent<SpellsController>();
+        manaManager = GetComponent<ManaManager>();
 	}
-	
+
 
 
 	void Update ()
     {
         PlayerMovement();
-
 	}
-    
-
-
 
     private void PlayerMovement()
     {
@@ -75,10 +77,16 @@ public class ClickToMove : MonoBehaviour {
     public void PlayAttackAnimations()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            animator.SetTrigger("Attack");
+        {
 
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-            animator.SetBool("Skill", true);
+                animator.SetTrigger("Attack");
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+                animator.SetBool("Skill", true);
+        }
         else
             animator.SetBool("Skill", false);
 
