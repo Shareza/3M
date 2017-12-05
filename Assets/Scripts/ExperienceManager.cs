@@ -9,6 +9,11 @@ public class ExperienceManager : MonoBehaviour {
     public Image experienceBar;
     public Text exp;
     public Text lvl;
+    public GameObject levelUpAnimation;
+    public Transform aura;
+    public HealthManager hp;
+    public ManaManager mana;
+
     public float currentExperience;
     private float experienceForCurrentLevel;
     public float experienceForNextLevel;
@@ -16,6 +21,8 @@ public class ExperienceManager : MonoBehaviour {
 
     public void Start()
     {
+        hp = GetComponent<HealthManager>();
+        mana = GetComponent<ManaManager>();
         currentExperience = 0;
         level = 1;
     }
@@ -54,10 +61,12 @@ public class ExperienceManager : MonoBehaviour {
         if (currentExperience >= experienceForNextLevel)
         {
             ResetExperienceBar();
+            FillUpResources();
             float extraExp = GetExtraExp(currentExperience, experienceForNextLevel);
             level += 1;
             currentExperience = extraExp;
             experienceForNextLevel = CalculateExperienceForNextLevel();
+            Instantiate(levelUpAnimation, aura.position, aura.rotation);
         }
     }
 
@@ -94,5 +103,11 @@ public class ExperienceManager : MonoBehaviour {
                 break;
         }
         return temp;
+    }
+
+    public void FillUpResources()
+    {
+        hp.currentHealth = hp.maxHealth;
+        mana.currentMana = mana.maxMana;
     }
 }

@@ -4,37 +4,26 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 4f;
-    //
     Vector3 forward, right;
-    //
     Animator anim;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        //
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
-        //
     }
 
     void Update()
     {
-        //float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        //float moveVertical = Input.GetAxisRaw("Vertical");
-
-        //ControllPlayer(moveHorizontal, moveVertical);
-        //Animating(moveVertical, moveHorizontal);
-
-        //
         if (Input.anyKey)
             Move();
+
         Animating();
-        //
     }
-    //
+
     private void Move()
     {
         Vector3 direction = new Vector3(Input.GetAxis("HorizontalKey"), 0, Input.GetAxis("VerticalKey"));
@@ -61,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Skill", false);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            anim.SetTrigger("Attack");
+            anim.SetTrigger("Attack"); 
     }
 
     void ControllPlayer(float moveHorizontal, float moveVertical)

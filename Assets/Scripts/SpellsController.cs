@@ -6,15 +6,19 @@ public class SpellsController : MonoBehaviour {
 
     public GameObject fireBall;
     public GameObject lightningStorm;
+    public GameObject magicShield;
     public Transform spellSpawn;
+    public Transform auraSpawn;
 
     public float fireBallRequiredMana = 50;
     public float thunderStormRequiredMana = 100;
-    public float healRequiredMana = 100;
+    public float magicShieldRequiredMana = 100;
+    public float magicShieldTime = 4;
 
     private ManaManager manaManager;
     private HealthManager healthManager;
     private Animator animator;
+    public bool isShielded;
 
     public void Start()
     {
@@ -47,11 +51,18 @@ public class SpellsController : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (manaManager.currentMana >= healRequiredMana)
+            if (manaManager.currentMana >= magicShieldRequiredMana)
             {
-                manaManager.DesreaseAmount(healRequiredMana);
-                healthManager.AddHealth(300);
+                isShielded = true;
+                Invoke("DisableMagicShield", magicShieldTime);
+                manaManager.DesreaseAmount(magicShieldRequiredMana);
+                Instantiate(magicShield, auraSpawn.position, auraSpawn.rotation);
             }
         }
+    }
+
+    public void DisableMagicShield()
+    {
+        isShielded = false;
     }
 }

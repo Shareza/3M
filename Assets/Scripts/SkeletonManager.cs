@@ -29,7 +29,7 @@ public class SkeletonManager : MonoBehaviour
         {
             experienceManager.Add(experience);
             Destroy(gameObject);   
-            DropItems();  
+            //DropItems();  
         }
     }
 

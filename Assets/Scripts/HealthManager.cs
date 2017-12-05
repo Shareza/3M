@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,16 +11,26 @@ public class HealthManager : MonoBehaviour
     public float maxHealth = 1000;
     public float passiveHealthRegen = 2;
     public Image healthBar;
+    private SpellsController player;
+    private Animator anim;
 
     public void Start()
     {
         currentHealth = 1000;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<SpellsController>();
+        anim = GetComponent<Animator>();
     }
 
     public void Update()
     {
+        if (currentHealth <= 0)
+        {
+            anim.SetBool("IsDead", true);
+            Invoke("Freeze", 1.5f);
+        }
+
         IncreaseHealthPassively(passiveHealthRegen);
-        FillHealthBar();
+        FillHealthBar(); 
     }
 
     private void FillHealthBar()
@@ -29,7 +40,8 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        if(!player.isShielded)
+            currentHealth -= damage;
     }
 
     public void AddHealth(float health)
@@ -41,6 +53,11 @@ public class HealthManager : MonoBehaviour
     {
         if (currentHealth < maxHealth)
             currentHealth += regen;
+    }
+
+    public void Freeze()
+    {
+        Time.timeScale = 0;
     }
 
 }
