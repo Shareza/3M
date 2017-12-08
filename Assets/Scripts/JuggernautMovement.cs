@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,17 @@ public class JuggernautMovement : MonoBehaviour {
 
     public float speed;
     public float range;
-    private GameObject player;
+    public GameObject fireBomb;
+    public Transform player;
     private CharacterController controller;
     private Animator animator;
+
     
 
 
 	void Start ()
     {
-        player = GameObject.Find("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 	}
@@ -28,6 +31,19 @@ public class JuggernautMovement : MonoBehaviour {
         {
             animator.SetBool("IsWalking", false);
             RandomAttackAnimation();
+        }
+
+        SummonFire();
+    }
+
+    private void SummonFire()
+    {
+        var seed = UnityEngine.Random.Range(0, 50);
+
+        if(seed > 45)
+        {
+            //animator.SetTrigger("SummonFire");
+            Instantiate(fireBomb, player.position, player.rotation);
         }
     }
 
@@ -54,7 +70,7 @@ public class JuggernautMovement : MonoBehaviour {
 
     void RandomAttackAnimation()
     {
-        int seed = Random.Range(0, 2);
+        int seed = UnityEngine.Random.Range(0, 2);
 
         switch(seed)
         {

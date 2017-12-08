@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -170,9 +172,11 @@
     <Compile Include="Assets\Scripts\HealthBarFacingCamera.cs" />
     <Compile Include="Assets\Scripts\HealthManager.cs" />
     <Compile Include="Assets\Scripts\JuggernautMovement.cs" />
+    <Compile Include="Assets\Scripts\JuggernautsFireBomb.cs" />
     <Compile Include="Assets\Scripts\MagicShield.cs" />
     <Compile Include="Assets\Scripts\ManaManager.cs" />
     <Compile Include="Assets\Scripts\MedicalBox.cs" />
+    <Compile Include="Assets\Scripts\NightShadeController.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SkeletonManager.cs" />
     <Compile Include="Assets\Scripts\SkeletonMovementAndAnimation.cs" />
