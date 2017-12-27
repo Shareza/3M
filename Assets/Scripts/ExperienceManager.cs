@@ -67,7 +67,14 @@ public class ExperienceManager : MonoBehaviour {
             currentExperience = extraExp;
             experienceForNextLevel = CalculateExperienceForNextLevel();
             Instantiate(levelUpAnimation, aura.position, aura.rotation);
+            IncreaseResources();
         }
+    }
+
+    private void IncreaseResources()
+    {
+        mana.IncreaseMaxMana();
+        hp.IncreaseMaxHp();
     }
 
     private float GetExtraExp(float currExp, float nextLevelExp)

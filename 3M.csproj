@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -225,13 +227,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\LightningBolt\LightningBoltScript.cs" />
+    <Compile Include="Assets\Scripts\ArachnidManager.cs" />
+    <Compile Include="Assets\Scripts\ArachnidMovement.cs" />
+    <Compile Include="Assets\Packages\LightningBolt\LightningBoltScript.cs" />
     <Compile Include="Assets\Packages\Particle Dissolve Shader by Moonflower Carnivore\Scripts\HUDFPS.cs" />
     <Compile Include="Assets\Packages\Particle Dissolve Shader by Moonflower Carnivore\Scripts\PDS_GameController.cs" />
     <Compile Include="Assets\Packages\Particle Dissolve Shader by Moonflower Carnivore\Scripts\ScrollingUVs_PDS.cs" />
     <Compile Include="Assets\Packages\Particle Ribbon by Moonflower Carnivore\Scripts\randomParticleRotation.cs" />
     <Compile Include="Assets\Packages\Particle Ribbon by Moonflower Carnivore\Scripts\ReverseNormals.cs" />
     <Compile Include="Assets\Packages\Particle Ribbon by Moonflower Carnivore\Scripts\rotation.cs" />
+    <Compile Include="Assets\Packages\PowerUp\Scripts\CustomizablePowerUp.cs" />
+    <Compile Include="Assets\Packages\PowerUp\Scripts\PowerUpManager.cs" />
+    <Compile Include="Assets\Packages\PowerUp\Scripts\PowerUpRotation.cs" />
+    <Compile Include="Assets\Packages\PowerUp\Scripts\ScaleParticles.cs" />
+    <Compile Include="Assets\Packages\PowerUp\Scripts\TakeablePowerUp.cs" />
+    <Compile Include="Assets\Packages\PowerUp\Scripts\Utility\Singleton.cs" />
     <Compile Include="Assets\Packages\PyroParticles\Demo\DemoScript.cs" />
     <Compile Include="Assets\Packages\PyroParticles\Demo\DemoScriptEditor.cs" />
     <Compile Include="Assets\Packages\PyroParticles\Prefab\Script\FireBaseScript.cs" />
@@ -241,10 +251,6 @@
     <Compile Include="Assets\Packages\PyroParticles\Prefab\Script\FireProjectileScript.cs" />
     <Compile Include="Assets\Packages\PyroParticles\Prefab\Script\MeteorSwarmScript.cs" />
     <Compile Include="Assets\Packages\PyroParticles\Prefab\Script\SingleLineAttribute.cs" />
-    <Compile Include="Assets\Packages\Spawner\Example\Script\RandomMover.cs" />
-    <Compile Include="Assets\Packages\Spawner\Example\Script\SpawnViewer.cs" />
-    <Compile Include="Assets\Packages\Spawner\Scripts\InstanceManager.cs" />
-    <Compile Include="Assets\Packages\Spawner\Scripts\SpawnEnums.cs" />
     <Compile Include="Assets\Packages\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\Packages\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
     <Compile Include="Assets\Packages\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
@@ -302,26 +308,47 @@
     <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\ClickToMove.cs" />
-    <Compile Include="Assets\Scripts\Collectibles.cs" />
     <Compile Include="Assets\Scripts\DamageManager.cs" />
+    <Compile Include="Assets\Scripts\ExperienceManager.cs" />
     <Compile Include="Assets\Scripts\ExplosionScript.cs" />
     <Compile Include="Assets\Scripts\FireBallScript.cs" />
     <Compile Include="Assets\Scripts\HealthBarFacingCamera.cs" />
+    <Compile Include="Assets\Scripts\HealthManager.cs" />
+    <Compile Include="Assets\Scripts\JuggernautMovement.cs" />
+    <Compile Include="Assets\Scripts\JuggernautSpells.cs" />
+    <Compile Include="Assets\Scripts\MagicShield.cs" />
+    <Compile Include="Assets\Scripts\ManaManager.cs" />
     <Compile Include="Assets\Scripts\MedicalBox.cs" />
-    <Compile Include="Assets\Scripts\Mob.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\SkeletonHealthManager.cs" />
+    <Compile Include="Assets\Scripts\SkeletonManager.cs" />
+    <Compile Include="Assets\Scripts\SkeletonMovementAndAnimation.cs" />
     <Compile Include="Assets\Scripts\SkeletonSpawn.cs" />
-    <Compile Include="Assets\Scripts\SpawnAI.cs" />
-    <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\SpellsController.cs" />
     <Compile Include="Assets\Scripts\ThunderStormScript.cs" />
+    <Compile Include="Assets\Scripts\World.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\LightningBolt\Readme.txt" />
+    <None Include="Assets\KY_effects\ReadMe.txt" />
+    <None Include="Assets\KY_effects\Shader\S_ky_ab_anime_dyn.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_ab_smoke.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_ab_sw_dyn.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_anime_dyn.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_hilight.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_noise.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_noise2.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_noise2_two.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_noise_texMask.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_noise_texMask_two.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_onlyColor.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_polar.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_add_two.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_additive.shader" />
+    <None Include="Assets\KY_effects\Shader\S_ky_distortion.shader" />
     <None Include="Assets\Packages\Blood decal pack\readme.txt" />
     <None Include="Assets\Packages\Fantasy Defensive Structures\Fantasy Defensive Strucures\Readme.txt" />
     <None Include="Assets\Packages\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+    <None Include="Assets\Packages\LightningBolt\Readme.txt" />
     <None Include="Assets\Packages\Mega Fantasy Props Pack\README.txt" />
     <None Include="Assets\Packages\Particle Dissolve Shader by Moonflower Carnivore\ReadMe.txt" />
     <None Include="Assets\Packages\Particle Dissolve Shader by Moonflower Carnivore\Shaders\legacy\DissolveSoft_Alpha_Additive.shader" />
@@ -350,7 +377,6 @@
     <None Include="Assets\Packages\Particle Ribbon by Moonflower Carnivore\readme_Simple_Particle_Ribbon.txt" />
     <None Include="Assets\Packages\PyroParticles\Prefab\Materials\AdditiveTintable.shader" />
     <None Include="Assets\Packages\PyroParticles\Readme.txt" />
-    <None Include="Assets\Packages\Spawner\README.txt" />
     <None Include="Assets\Packages\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Packages\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Packages\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
@@ -360,8 +386,8 @@
     <None Include="Assets\Packages\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
     <None Include="Assets\Packages\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
     <None Include="Assets\Packages\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
-    <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

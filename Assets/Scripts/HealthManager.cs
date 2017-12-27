@@ -13,12 +13,14 @@ public class HealthManager : MonoBehaviour
     public Image healthBar;
     private SpellsController player;
     private Animator anim;
+    private Rigidbody rb;
 
     public void Start()
     {
         currentHealth = 1000;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<SpellsController>();
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     public void Update()
@@ -57,7 +59,14 @@ public class HealthManager : MonoBehaviour
 
     public void Freeze()
     {
+        //to do
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
         Time.timeScale = 0;
+    }
+
+    public void IncreaseMaxHp()
+    {
+        maxHealth += 50;
     }
 
 }

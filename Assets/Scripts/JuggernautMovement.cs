@@ -1,14 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class JuggernautMovement : MonoBehaviour {
 
     public float speed;
-    public float range;
+    public float range = 5;
+    public float singleAttackDamage = 40;
+    public float doubleAttackDamage = 80;
+
+    private bool canMove;
     private GameObject player;
     private CharacterController controller;
     private Animator animator;
+    private HealthManager playerHealth;
     
 
 
@@ -17,18 +23,32 @@ public class JuggernautMovement : MonoBehaviour {
         player = GameObject.Find("Player");
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        playerHealth = GameObject.Find("Player").GetComponent<HealthManager>();
+        canMove = true;
 	}
 	
 	void Update ()
     {
-        animator.SetBool("IsWalking", true);
+        transform.LookAt(player.transform.position);
         Chase();
 
         if (InRange())
         {
-            animator.SetBool("IsWalking", false);
-            RandomAttackAnimation();
+            StopMoving(); 
+            AttackAnimation();
+            Invoke("BackToMoving", 2.0f);
         }
+    }
+
+    public void BackToMoving()
+    {
+        canMove = true;
+    }
+
+    private void StopMoving()
+    {
+        canMove = false;
+        animator.SetBool("IsWalking", false);
     }
 
     bool InRange()
@@ -46,26 +66,42 @@ public class JuggernautMovement : MonoBehaviour {
     void Chase()
     {
 
-        transform.LookAt(player.transform.position);
-        controller.SimpleMove(transform.forward * speed);
-        animator.SetBool("IsWalking", true);
+        if (canMove)
+        {
+            transform.LookAt(player.transform.position);
+            controller.SimpleMove(transform.forward * speed);
+            animator.SetBool("IsWalking", true);
+        }
 
     }
 
-    void RandomAttackAnimation()
+    void AttackAnimation()
     {
-        int seed = Random.Range(0, 2);
+        int seed = UnityEngine.Random.Range(0, 2);
 
         switch(seed)
         {
             case 0:
-                animator.SetTrigger("SingleAttack");
+                SingleAttack();
                 break;
 
             case 1:
-                animator.SetTrigger("DoubleAttack");
+                DoubleAttack();
                 break;
         }
+
+    }
+
+    private void DoubleAttack()
+    {
+        animator.SetTrigger("DoubleAttack");
+            playerHealth.TakeDamage(doubleAttackDamage);
+    }
+
+    private void SingleAttack()
+    {
+        animator.SetTrigger("SingleAttack");
+            playerHealth.TakeDamage(singleAttackDamage);
 
     }
 }

@@ -38,4 +38,9 @@ public class ManaManager : MonoBehaviour {
             manaBar.fillAmount = (currentMana / maxMana);
         }
     }
+
+    public void IncreaseMaxMana()
+    {
+        maxMana += 20;
+    }
 }

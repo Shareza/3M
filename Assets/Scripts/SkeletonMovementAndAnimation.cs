@@ -7,7 +7,7 @@ public class SkeletonMovementAndAnimation : MonoBehaviour {
 
     public float speed;
     public float range = 3;
-    public float damage = 10;
+    public float damage = 5;
 
     public CharacterController controller;
     public GameObject player;
